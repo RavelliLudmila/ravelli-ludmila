@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Poppins } from 'next/font/google';
 import { Suspense } from 'react';
+import { Navigation } from '@/components/navigation';
 import './globals.css';
 
 const poppins = Poppins({
@@ -11,8 +12,23 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: 'Ludmila Ravelli - Frontend Developer',
-    description: 'Portfolio interactivo de Ludmila Ravelli - Frontend Developer especializada en React, Next.js y diseño',
+    title: 'Ludmila Ravelli - Full Stack Developer',
+    description: 'Portfolio profesional de Ludmila Ravelli - Full Stack Developer especializada en React, Next.js y tecnologías web modernas',
+    keywords: ['Ludmila Ravelli', 'Full Stack Developer', 'React', 'Next.js', 'Node.js', 'TypeScript'],
+    authors: [{ name: 'Ludmila Ravelli' }],
+    creator: 'Ludmila Ravelli',
+    openGraph: {
+        title: 'Ludmila Ravelli - Full Stack Developer',
+        description: 'Portfolio profesional de Ludmila Ravelli - Full Stack Developer especializada en React, Next.js y tecnologías web modernas',
+        url: 'https://ludmila-ravelli.vercel.app',
+        siteName: 'Ludmila Ravelli Portfolio',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Ludmila Ravelli - Full Stack Developer',
+        description: 'Portfolio profesional de Ludmila Ravelli - Full Stack Developer especializada en React, Next.js y tecnologías web modernas',
+    },
 };
 
 export default function RootLayout({
@@ -22,7 +38,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="es">
-            <body className={`font-sans ${poppins.variable} antialiased`}>
+            <body className={`font-poppins ${poppins.variable} antialiased bg-background text-foreground`}>
+                <Navigation />
                 <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </body>
         </html>

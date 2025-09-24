@@ -1,104 +1,134 @@
 'use client';
 
-import { useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ProjectCard } from '@/components/project-card';
 import { SkillsGrid } from '@/components/skills-grid';
 import { ContactForm } from '@/components/contact-form';
 import { ScrollToTopButton } from '@/components/scroll-to-top-button';
-import { useScrollToTop } from '@/hooks/use-scroll-to-top';
-import { projects, profile } from '@/content/portfolioData';
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { SplashScreen } from '@/components/splash-screen';
+import { profile, projects } from '@/content/portfolioData';
+import { Github, Linkedin, Mail, MapPin, ArrowDown, Coffee } from 'lucide-react';
 
-export default function Home() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { showScrollButton, scrollToTop } = useScrollToTop({
-        threshold: 200,
-        containerRef,
-    });
+export default function HomePage() {
+    const [showScrollButton, setShowScrollButton] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowScrollButton(window.scrollY > 300);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const scrollToProjects = () => {
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
-        <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div className="min-h-screen bg-background text-foreground">
+            <SplashScreen />
+            
             {/* Hero Section */}
-            <section className="min-h-screen flex flex-col justify-center items-center p-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center space-y-6 max-w-4xl"
-                >
-                    <div className="space-y-4">
+            <main className="pt-20">
+                <section className="container mx-auto px-6 py-20 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="max-w-4xl mx-auto"
+                    >
                         <motion.h1
+                            className="text-4xl md:text-6xl font-bold mb-6"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2, duration: 0.6 }}
-                            className="text-4xl md:text-6xl font-bold text-foreground"
+                            transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            {profile.name}
+                            <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+                                {profile.name}
+                            </span>
                         </motion.h1>
+
                         <motion.h2
+                            className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4, duration: 0.6 }}
-                            className="text-xl md:text-2xl text-muted-foreground"
+                            transition={{ duration: 0.8, delay: 0.4 }}
                         >
                             {profile.title}
                         </motion.h2>
-                        <motion.div
+
+                        <motion.p
+                            className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6, duration: 0.6 }}
-                            className="flex items-center justify-center gap-2 text-muted-foreground"
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                        >
+                            {profile.bio}
+                        </motion.p>
+
+                        <motion.div
+                            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.8 }}
+                        >
+                            <Button onClick={scrollToProjects} size="lg" className="group">
+                                Ver Proyectos
+                                <ArrowDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
+                            </Button>
+                            <Button variant="outline" size="lg" asChild>
+                                <a href={profile.email} className="flex items-center gap-2">
+                                    <Coffee className="w-4 h-4" />
+                                    Conversemos
+                                </a>
+                            </Button>
+                        </motion.div>
+
+                        <motion.div
+                            className="flex justify-center space-x-6"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 1.0 }}
+                        >
+                            <Button variant="ghost" size="sm" asChild>
+                                <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary">
+                                    <Github className="w-5 h-5" />
+                                    GitHub
+                                </a>
+                            </Button>
+                            <Button variant="ghost" size="sm" asChild>
+                                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary">
+                                    <Linkedin className="w-5 h-5" />
+                                    LinkedIn
+                                </a>
+                            </Button>
+                            <Button variant="ghost" size="sm" asChild>
+                                <a href={`mailto:${profile.email}`} className="flex items-center gap-2 hover:text-primary">
+                                    <Mail className="w-5 h-5" />
+                                    Email
+                                </a>
+                            </Button>
+                        </motion.div>
+
+                        <motion.div
+                            className="flex justify-center items-center gap-2 text-sm text-muted-foreground mt-8"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8, delay: 1.2 }}
                         >
                             <MapPin className="w-4 h-4" />
                             <span>{profile.location}</span>
                         </motion.div>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.8, duration: 0.6 }}
-                            className="text-lg text-muted-foreground max-w-2xl mx-auto"
-                        >
-                            {profile.bio}
-                        </motion.p>
-                    </div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1, duration: 0.6 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                    >
-                        <Button
-                            size="lg"
-                            className="text-lg px-8 py-3"
-                            onClick={() => {
-                                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-                            }}
-                        >
-                            Ver mis proyectos
-                        </Button>
-                        <div className="flex gap-3">
-                            <Button variant="outline" size="icon" asChild>
-                                <a href={profile.github} target="_blank" rel="noopener noreferrer">
-                                    <Github className="w-5 h-5" />
-                                </a>
-                            </Button>
-                            <Button variant="outline" size="icon" asChild>
-                                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-                                    <Linkedin className="w-5 h-5" />
-                                </a>
-                            </Button>
-                            <Button variant="outline" size="icon" asChild>
-                                <a href={`mailto:${profile.email}`}>
-                                    <Mail className="w-5 h-5" />
-                                </a>
-                            </Button>
-                        </div>
                     </motion.div>
-                </motion.div>
-            </section>
+                </section>
+            </main>
 
             {/* Projects Section */}
             <section id="projects" className="py-20 px-8">
