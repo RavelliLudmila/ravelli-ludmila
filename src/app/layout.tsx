@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { Poppins } from 'next/font/google';
 import { Suspense } from 'react';
 import { Navigation } from '@/components/navigation';
+import { ScrollProgressIndicator } from '@/components/scroll-progress-indicator';
 import './globals.css';
 
 const poppins = Poppins({
@@ -39,6 +40,7 @@ export default function RootLayout({
     return (
         <html lang="es">
             <body className={`font-poppins ${poppins.variable} antialiased bg-background text-foreground`}>
+                <ScrollProgressIndicator />
                 <Navigation />
                 <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </body>

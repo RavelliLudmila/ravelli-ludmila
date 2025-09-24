@@ -1,14 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { profile } from '@/content/portfolioData';
-
-interface NavigationProps {
-    currentSection?: string;
-}
+import { useActiveSection, useSmoothScroll } from '@/hooks/use-scroll-animations';
 
 const navItems = [
     { id: 'home', label: 'Inicio', href: '#' },
@@ -17,43 +14,13 @@ const navItems = [
     { id: 'contact', label: 'Contacto', href: '#contact' },
 ];
 
-export function Navigation({ currentSection = 'home' }: NavigationProps) {
+export function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState(currentSection);
+    const activeSection = useActiveSection(['home', 'projects', 'skills', 'contact']);
+    const { scrollToSection } = useSmoothScroll();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = ['home', 'projects', 'skills', 'contact'];
-            const scrollPosition = window.scrollY + 100;
-
-            for (const sectionId of sections.reverse()) {
-                const element = sectionId === 'home' 
-                    ? document.body 
-                    : document.getElementById(sectionId);
-                
-                if (element) {
-                    const offsetTop = sectionId === 'home' ? 0 : element.offsetTop;
-                    if (scrollPosition >= offsetTop) {
-                        setActiveSection(sectionId);
-                        break;
-                    }
-                }
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const scrollToSection = (sectionId: string) => {
-        if (sectionId === 'home') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+    const handleNavigation = (sectionId: string) => {
+        scrollToSection(sectionId);
         setIsOpen(false);
     };
 
@@ -72,7 +39,7 @@ export function Navigation({ currentSection = 'home' }: NavigationProps) {
                         <motion.div
                             whileHover={{ scale: 1.05 }}
                             className="text-xl font-bold text-foreground cursor-pointer"
-                            onClick={() => scrollToSection('home')}
+                            onClick={() => handleNavigation('home')}
                         >
                             LR
                         </motion.div>
@@ -82,7 +49,7 @@ export function Navigation({ currentSection = 'home' }: NavigationProps) {
                             {navItems.map((item) => (
                                 <button
                                     key={item.id}
-                                    onClick={() => scrollToSection(item.id)}
+                                    onClick={() => handleNavigation(item.id)}
                                     className={`text-sm font-medium transition-colors hover:text-primary ${
                                         activeSection === item.id
                                             ? 'text-primary'
@@ -140,7 +107,7 @@ export function Navigation({ currentSection = 'home' }: NavigationProps) {
                             {navItems.map((item) => (
                                 <button
                                     key={item.id}
-                                    onClick={() => scrollToSection(item.id)}
+                                    onClick={() => handleNavigation(item.id)}
                                     className={`block w-full text-left text-sm font-medium transition-colors hover:text-primary ${
                                         activeSection === item.id
                                             ? 'text-primary'
