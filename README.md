@@ -2,11 +2,13 @@
 
 <div align="center">
 
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ravelliludmila)
-  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/RavelliLudmila)
-  [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-  [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ravelliludmila)
+    [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/RavelliLudmila)
+    [![CV](https://img.shields.io/badge/CV-FF5722?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](/public/Ludmila%20Ravelli%20–%20CV%20–%20Frontend%20Developer.pdf)
+    [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+    [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+    [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
 </div>
 
 ## 🌟 Sobre el Proyecto
@@ -171,7 +173,8 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 **Ludmila Ravelli** - Frontend Developer
 
 -   📧 Email: [lud.ravelli@gmail.com](https://mail.google.com/mail/u/0/?to=lud.ravelli@gmail.com&su=Oportunidad+Laboral&body=Hola+Ludmila,%0A%0AHe+visto+tu+portfolio+y+me+interesa+conocer+m%C3%A1s+sobre+tu+experiencia+como+Frontend+Developer.%0A%0A%5BEscribe+tu+mensaje+aqu%C3%AD%5D%0A%0ASaludos,+%5BTu+Nombre%5D.&fs=1&tf=cm)
--   💼 LinkedIn: [ravelliludmila](https://linkedin.com/in/ravelliludmila)
+-   📄 CV: [Descargar CV](/public/Ludmila%20Ravelli%20–%20CV%20–%20Frontend%20Developer.pdf)
+-   👜 LinkedIn: [ravelliludmila](https://linkedin.com/in/ravelliludmila)
 -   🐱 GitHub: [RavelliLudmila](https://github.com/RavelliLudmila)
 -   📍 Ubicación: Santa Fe, Argentina
 
@@ -179,5 +182,5 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 <div align="center">
   <p>⭐ ¡Si te gustó este proyecto, no olvides darle una estrella!</p>
-  <p>Desarrollado con ❤️ por <a href="https://github.com/RavelliLudmila">Ludmila Ravelli</a></p>
+  <p>Desarrollado con ❤️ por <a href="https://github.com/RavelliLudmila" target="_blank" rel="noopener noreferrer">Ludmila Ravelli</a></p>
 </div>
