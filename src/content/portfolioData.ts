@@ -18,7 +18,7 @@ export const projects: ProjectData[] = [
         technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
         github: PROJECT_LINKS.PSYMATCH_REPO,
         demo: PROJECT_LINKS.PSYMATCH_DEMO,
-        icon: '🧠'
+        icon: '🧠',
     },
     {
         id: 'aura-ecommerce',
@@ -27,8 +27,8 @@ export const projects: ProjectData[] = [
         technologies: ['Next.js', 'React', 'TypeORM', 'PostgreSQL', 'Express.js'],
         github: PROJECT_LINKS.AURA_REPO,
         demo: '#',
-        icon: '🛒'
-    }
+        icon: '🛒',
+    },
 ];
 
 export interface ProfileData {
@@ -52,8 +52,8 @@ export const profile: ProfileData = {
     github: CONTACT_LINKS.GITHUB,
     languages: [
         { name: 'Español', level: 'Nativo' },
-        { name: 'Inglés', level: 'Intermedio-Alto (B2)' }
-    ]
+        { name: 'Inglés', level: 'Intermedio-Alto (B2)' },
+    ],
 };
 
 export const experience = [
@@ -62,9 +62,10 @@ export const experience = [
         title: 'Teaching Assistant',
         company: 'Henry',
         period: 'mar 2024 — jul 2024',
-        description: 'Soporte académico a estudiantes en JavaScript, React y desarrollo web. Coordinación de grupos de estudio y resolución de dudas técnicas.',
-        technologies: ['JavaScript', 'React', 'Node.js', 'Git']
-    }
+        description:
+            'Soporte académico a estudiantes en JavaScript, React y desarrollo web. Coordinación de grupos de estudio y resolución de dudas técnicas.',
+        technologies: ['JavaScript', 'React', 'Node.js', 'Git'],
+    },
 ];
 
 export const education = [
@@ -73,13 +74,13 @@ export const education = [
         title: 'Tecnicatura Universitaria en Tecnologías de la Información',
         institution: 'UTN (Universidad Tecnológica Nacional)',
         period: 'ago 2023 — actualidad',
-        status: 'En curso'
+        status: 'En curso',
     },
     {
         id: 'henry-bootcamp',
         title: 'Full Stack Web Development Bootcamp',
         institution: 'Henry',
         period: 'sep 2023 — feb 2024',
-        status: 'Completado'
-    }
+        status: 'Completado',
+    },
 ];

@@ -15,7 +15,7 @@ export default function Home() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { showScrollButton, scrollToTop } = useScrollToTop({
         threshold: 200,
-        containerRef
+        containerRef,
     });
 
     return (
@@ -63,16 +63,20 @@ export default function Home() {
                             {profile.bio}
                         </motion.p>
                     </div>
-                    
+
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1, duration: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
-                        <Button size="lg" className="text-lg px-8 py-3" onClick={() => {
-                            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-                        }}>
+                        <Button
+                            size="lg"
+                            className="text-lg px-8 py-3"
+                            onClick={() => {
+                                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                        >
                             Ver mis proyectos
                         </Button>
                         <div className="flex gap-3">
@@ -106,12 +110,8 @@ export default function Home() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            Mis Proyectos
-                        </h2>
-                        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                            Algunos de los proyectos en los que he trabajado
-                        </p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Mis Proyectos</h2>
+                        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Algunos de los proyectos en los que he trabajado</p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -146,12 +146,8 @@ export default function Home() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            Tecnologías y Habilidades
-                        </h2>
-                        <p className="text-muted-foreground text-lg">
-                            Stack tecnológico con el que trabajo
-                        </p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Tecnologías y Habilidades</h2>
+                        <p className="text-muted-foreground text-lg">Stack tecnológico con el que trabajo</p>
                     </motion.div>
 
                     <motion.div
@@ -175,12 +171,8 @@ export default function Home() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            Contacto
-                        </h2>
-                        <p className="text-muted-foreground text-lg">
-                            ¿Interesado en trabajar juntos? ¡Hablemos!
-                        </p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Contacto</h2>
+                        <p className="text-muted-foreground text-lg">¿Interesado en trabajar juntos? ¡Hablemos!</p>
                     </motion.div>
 
                     <motion.div

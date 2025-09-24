@@ -28,15 +28,15 @@ export function ContactForm() {
         validationSchema,
         onSubmit: async (values) => {
             setIsLoading(true);
-            
+
             // Simular envío de email
             try {
                 // Aquí iría la integración con EmailJS o similar
                 console.log('Form submitted:', values);
-                
+
                 // Simular delay de envío
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
+                await new Promise((resolve) => setTimeout(resolve, 1500));
+
                 setIsSubmitted(true);
             } catch (error) {
                 console.error('Error sending email:', error);
@@ -48,21 +48,13 @@ export function ContactForm() {
 
     if (isSubmitted) {
         return (
-            <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center space-y-6"
-            >
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-6">
                 <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
                 <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">
-                        ¡Mensaje enviado exitosamente!
-                    </h3>
-                    <p className="text-muted-foreground">
-                        Gracias por contactarme. Te responderé pronto.
-                    </p>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">¡Mensaje enviado exitosamente!</h3>
+                    <p className="text-muted-foreground">Gracias por contactarme. Te responderé pronto.</p>
                 </div>
                 <Button
                     onClick={() => {
@@ -95,9 +87,7 @@ export function ContactForm() {
                             className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
                             {...formik.getFieldProps('name')}
                         />
-                        {formik.touched.name && formik.errors.name && (
-                            <p className="text-destructive text-sm mt-1">{formik.errors.name}</p>
-                        )}
+                        {formik.touched.name && formik.errors.name && <p className="text-destructive text-sm mt-1">{formik.errors.name}</p>}
                     </div>
 
                     <div>
@@ -108,9 +98,7 @@ export function ContactForm() {
                             className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
                             {...formik.getFieldProps('email')}
                         />
-                        {formik.touched.email && formik.errors.email && (
-                            <p className="text-destructive text-sm mt-1">{formik.errors.email}</p>
-                        )}
+                        {formik.touched.email && formik.errors.email && <p className="text-destructive text-sm mt-1">{formik.errors.email}</p>}
                     </div>
 
                     <div>
@@ -121,20 +109,14 @@ export function ContactForm() {
                             className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                             {...formik.getFieldProps('message')}
                         />
-                        {formik.touched.message && formik.errors.message && (
-                            <p className="text-destructive text-sm mt-1">{formik.errors.message}</p>
-                        )}
+                        {formik.touched.message && formik.errors.message && <p className="text-destructive text-sm mt-1">{formik.errors.message}</p>}
                     </div>
 
-                    <Button
-                        type="submit"
-                        disabled={isLoading || !formik.isValid}
-                        className="w-full"
-                    >
+                    <Button type="submit" disabled={isLoading || !formik.isValid} className="w-full">
                         {isLoading ? (
                             <motion.div
                                 animate={{ rotate: 360 }}
-                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                                 className="w-4 h-4 border-2 border-current border-t-transparent rounded-full"
                             />
                         ) : (
