@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { profile } from '@/content/portfolioData';
 import { useActiveSection, useSmoothScroll } from '@/hooks/use-scroll-animations';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const navItems = [
     { id: 'home', label: 'Inicio', href: '#' },
@@ -63,6 +64,7 @@ export function Navigation() {
 
                         {/* Social Links */}
                         <div className="hidden md:flex items-center space-x-3">
+                            <ThemeToggle />
                             <Button variant="ghost" size="sm" asChild>
                                 <a href={profile.github} target="_blank" rel="noopener noreferrer">
                                     <Github className="w-4 h-4" />
@@ -119,6 +121,7 @@ export function Navigation() {
                             ))}
                             
                             <div className="flex items-center space-x-3 pt-4 border-t border-border">
+                                <ThemeToggle />
                                 <Button variant="ghost" size="sm" asChild>
                                     <a href={profile.github} target="_blank" rel="noopener noreferrer">
                                         <Github className="w-4 h-4" />
