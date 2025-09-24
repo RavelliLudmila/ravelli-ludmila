@@ -32,7 +32,7 @@ export function ChatConversation({ chat, onBack, onNavigateToChat }: ChatConvers
         formData: {},
     });
     const messagesEndRef = useRef<HTMLDivElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null!);
 
     const { showScrollButton, scrollToTop } = useScrollToTop({
         containerRef,
