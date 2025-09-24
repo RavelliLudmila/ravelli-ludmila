@@ -1,133 +1,230 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Mail, Send, CheckCircle } from 'lucide-react';
+import type { ChatMessage } from '@/content/chatData';
+import { MessageBubble } from '@/components/message-bubble';
+import { CONTACT_LINKS } from '@/lib/constants';
+
+interface ContactFormProps {
+    messages: ChatMessage[];
+    onAddMessage: (message: ChatMessage) => void;
+    onStepChange?: (step: string) => void;
+}
+
+interface FormData {
+    name: string;
+    email: string;
+    project: string;
+    timeline: string;
+    reference: string;
+}
 
 const validationSchema = Yup.object({
     name: Yup.string().required('El nombre es requerido'),
     email: Yup.string().email('Email inválido').required('El email es requerido'),
-    message: Yup.string().required('El mensaje es requerido'),
+    project: Yup.string().required('La descripción del proyecto es requerida'),
+    timeline: Yup.string(),
+    reference: Yup.string(),
 });
 
-export function ContactForm() {
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+export function ContactForm({ messages, onAddMessage, onStepChange }: ContactFormProps) {
+    const [currentStep, setCurrentStep] = useState<'initial' | 'name' | 'email' | 'project' | 'timeline' | 'reference' | 'summary' | 'completed'>(
+        'initial'
+    );
+    const [formData, setFormData] = useState<Partial<FormData>>({});
+    const [inputValue, setInputValue] = useState('');
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (['name', 'email', 'project', 'timeline', 'reference'].includes(currentStep)) {
+            setTimeout(() => {
+                inputRef.current?.focus();
+            }, 100);
+        }
+    }, [currentStep]);
 
     const formik = useFormik({
         initialValues: {
             name: '',
             email: '',
-            message: '',
+            project: '',
+            timeline: '',
+            reference: '',
         },
         validationSchema,
         onSubmit: async (values) => {
-            setIsLoading(true);
-
-            // Simular envío de email
             try {
-                // Aquí iría la integración con EmailJS o similar
-                console.log('Form submitted:', values);
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(values),
+                });
 
-                // Simular delay de envío
-                await new Promise((resolve) => setTimeout(resolve, 1500));
-
-                setIsSubmitted(true);
+                if (response.ok) {
+                    onAddMessage({
+                        from: 'me',
+                        text: '¡Perfecto! Tu mensaje ha sido enviado a lud.ravelli@gmail.com. Te responderé pronto. ✨',
+                    });
+                    setCurrentStep('completed');
+                    onStepChange?.('completed');
+                } else {
+                    throw new Error('Error al enviar');
+                }
             } catch (error) {
-                console.error('Error sending email:', error);
-            } finally {
-                setIsLoading(false);
+                onAddMessage({
+                    from: 'me',
+                    text: 'Hubo un error al enviar tu mensaje. Por favor, intenta nuevamente o escríbeme directamente:',
+                    buttons: [
+                        {
+                            label: 'Enviar Email Directo',
+                            action: CONTACT_LINKS.GMAIL_COMPOSE,
+                        },
+                        { label: 'Intentar de Nuevo', action: 'retry' },
+                    ],
+                });
             }
         },
     });
 
-    if (isSubmitted) {
-        return (
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-6">
-                <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-8 h-8 text-green-600" />
-                </div>
-                <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">¡Mensaje enviado exitosamente!</h3>
-                    <p className="text-muted-foreground">Gracias por contactarme. Te responderé pronto.</p>
-                </div>
-                <Button
-                    onClick={() => {
-                        setIsSubmitted(false);
-                        formik.resetForm();
-                    }}
-                    variant="outline"
-                >
-                    Enviar otro mensaje
-                </Button>
-            </motion.div>
-        );
-    }
+    const quickContactButtons = [
+        {
+            label: 'Email',
+            action: CONTACT_LINKS.GMAIL_COMPOSE,
+        },
+        { label: 'LinkedIn', action: CONTACT_LINKS.LINKEDIN },
+        { label: 'GitHub', action: CONTACT_LINKS.GITHUB },
+    ];
+
+    const handleStartForm = () => {
+        onAddMessage({ from: 'user', text: 'Comenzar formulario' });
+        setCurrentStep('name');
+        onStepChange?.('name');
+        onAddMessage({
+            from: 'me',
+            text: '¡Genial! Empecemos. ¿Cuál es tu **nombre**?',
+        });
+    };
+
+    const handleQuickContact = () => {
+        onAddMessage({ from: 'user', text: 'Contacto rápido' });
+        onAddMessage({
+            from: 'me',
+            text: '¡Perfecto! Aquí tienes mis **enlaces directos**:',
+            buttons: quickContactButtons,
+        });
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' && ['name', 'email', 'project', 'timeline', 'reference'].includes(currentStep)) {
+            e.preventDefault();
+            handleInputSubmit(inputValue);
+            setInputValue('');
+        }
+    };
+
+    const handleInputSubmit = (value: string) => {
+        if (!value.trim() && currentStep !== 'reference' && currentStep !== 'timeline') return;
+
+        const userMessage = { from: 'user' as const, text: value || 'Saltar' };
+        onAddMessage(userMessage);
+
+        const newFormData = { ...formData, [currentStep]: value };
+        setFormData(newFormData);
+        formik.setFieldValue(currentStep, value);
+
+        const steps = {
+            name: () => {
+                setCurrentStep('email');
+                onAddMessage({
+                    from: 'me',
+                    text: `Hola **${value}**! ¿Cuál es tu *email*?`,
+                });
+            },
+            email: () => {
+                setCurrentStep('project');
+                onAddMessage({
+                    from: 'me',
+                    text: 'Perfecto. Cuéntame sobre tu **proyecto** o idea:',
+                });
+            },
+            project: () => {
+                setCurrentStep('timeline');
+                onAddMessage({
+                    from: 'me',
+                    text: '¡Interesante! ¿Cuál es tu *timeline* estimado? (opcional)\n\n**Presiona Enter para continuar**',
+                });
+            },
+            timeline: () => {
+                setCurrentStep('reference');
+                onAddMessage({
+                    from: 'me',
+                    text: '¿Cómo *conociste* mi trabajo? (opcional)\n\n**Presiona Enter para continuar**',
+                });
+            },
+            reference: () => {
+                showSummary({ ...newFormData, reference: value });
+            },
+        };
+
+        steps[currentStep as keyof typeof steps]?.();
+    };
+
+    const showSummary = (data: Partial<FormData>) => {
+        setCurrentStep('summary');
+        onAddMessage({
+            from: 'me',
+            text: `**Resumen de tu consulta:**\n\n📝 **Nombre:** ${data.name}\n📧 **Email:** ${data.email}\n🚀 **Proyecto:** ${data.project}\n${
+                data.timeline ? `⏰ **Timeline:** ${data.timeline}\n` : ''
+            }${data.reference ? `🔗 **Referencia:** ${data.reference}` : ''}`,
+            buttons: [
+                { label: '✅ Enviar', action: 'send' },
+                { label: '❌ Cancelar', action: 'cancel' },
+            ],
+        });
+    };
+
+    const handleSummaryAction = (action: string) => {
+        if (action === 'send') {
+            onAddMessage({ from: 'user', text: 'Enviar' });
+            formik.handleSubmit();
+        } else if (action === 'cancel') {
+            onAddMessage({ from: 'user', text: 'Cancelar' });
+            setCurrentStep('initial');
+            setFormData({});
+            formik.resetForm();
+            onStepChange?.('initial');
+            onAddMessage({
+                from: 'me',
+                text: 'No hay problema. ¿Quieres **comenzar de nuevo**?',
+                buttons: [
+                    { label: 'Comenzar Formulario', action: 'start-form' },
+                    { label: 'Contacto Rápido', action: 'quick-contact' },
+                ],
+            });
+        } else if (action === 'retry') {
+            formik.handleSubmit();
+        }
+    };
+
+    const handleButtonClick = (action: string) => {
+        if (action === 'start-form') {
+            handleStartForm();
+        } else if (action === 'quick-contact') {
+            handleQuickContact();
+        } else if (action === 'send' || action === 'cancel' || action === 'retry') {
+            handleSummaryAction(action);
+        } else if (action.startsWith('http') || action.includes('mail.google.com')) {
+            window.open(action, '_blank');
+        }
+    };
 
     return (
-        <Card className="w-full max-w-lg mx-auto">
-            <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                    <Mail className="w-5 h-5" />
-                    Contacto
-                </CardTitle>
-            </CardHeader>
-            <CardContent>
-                <form onSubmit={formik.handleSubmit} className="space-y-4">
-                    <div>
-                        <Label htmlFor="name">Nombre</Label>
-                        <input
-                            id="name"
-                            type="text"
-                            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
-                            {...formik.getFieldProps('name')}
-                        />
-                        {formik.touched.name && formik.errors.name && <p className="text-destructive text-sm mt-1">{formik.errors.name}</p>}
-                    </div>
-
-                    <div>
-                        <Label htmlFor="email">Email</Label>
-                        <input
-                            id="email"
-                            type="email"
-                            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
-                            {...formik.getFieldProps('email')}
-                        />
-                        {formik.touched.email && formik.errors.email && <p className="text-destructive text-sm mt-1">{formik.errors.email}</p>}
-                    </div>
-
-                    <div>
-                        <Label htmlFor="message">Mensaje</Label>
-                        <textarea
-                            id="message"
-                            rows={4}
-                            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring resize-none"
-                            {...formik.getFieldProps('message')}
-                        />
-                        {formik.touched.message && formik.errors.message && <p className="text-destructive text-sm mt-1">{formik.errors.message}</p>}
-                    </div>
-
-                    <Button type="submit" disabled={isLoading || !formik.isValid} className="w-full">
-                        {isLoading ? (
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                                className="w-4 h-4 border-2 border-current border-t-transparent rounded-full"
-                            />
-                        ) : (
-                            <>
-                                <Send className="w-4 h-4 mr-2" />
-                                Enviar mensaje
-                            </>
-                        )}
-                    </Button>
-                </form>
-            </CardContent>
-        </Card>
+        <div className="space-y-4">
+            {messages.map((message, index) => (
+                <MessageBubble key={index} message={message} onButtonClick={handleButtonClick} />
+            ))}
+        </div>
     );
 }

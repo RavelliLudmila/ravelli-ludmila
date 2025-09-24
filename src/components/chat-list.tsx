@@ -20,7 +20,6 @@ export function ChatList({ chats, onSelectChat, activeChat }: ChatListProps) {
             about: 'from-purple-300 to-blue-300',
             skills: 'from-blue-300 to-teal-300',
             projects: 'from-teal-300 to-green-300',
-            experience: 'from-emerald-300 to-cyan-300',
             education: 'from-green-300 to-yellow-300',
             recommendations: 'from-yellow-300 to-orange-300',
             contact: 'from-orange-300 to-pink-300',
@@ -37,7 +36,7 @@ export function ChatList({ chats, onSelectChat, activeChat }: ChatListProps) {
                     </div>
                     <div>
                         <h1 className="font-semibold text-foreground">Ludmila Ravelli</h1>
-                        <p className="text-xs text-muted-foreground">Full Stack Developer</p>
+                        <p className="text-xs text-muted-foreground">Frontend Developer</p>
                     </div>
                 </div>
             </div>
