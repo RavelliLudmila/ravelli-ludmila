@@ -1,4 +1,4 @@
-import { CONTACT_BUTTONS } from '@/lib/constants';
+import { CONTACT_BUTTONS, PROJECT_LINKS, CONTACT_LINKS } from '@/lib/constants';
 
 export type ChatMessage = {
     from: 'me' | 'user';
@@ -42,7 +42,7 @@ export const chats: Chat[] = [
         messages: [
             {
                 from: 'me',
-                text: 'Hola — soy **Ludmila Ravelli**. Full Stack Developer desde Santa Fe, Argentina.',
+                text: 'Hola — soy **Ludmila Ravelli**. Frontend Developer desde Santa Fe, Argentina.',
             },
             {
                 from: 'me',
@@ -58,15 +58,15 @@ export const chats: Chat[] = [
             },
             {
                 from: 'me',
-                text: 'Actualmente trabajo como **Freelance Full Stack Developer** (sep 2025 — actualidad), desarrollando portfolios, páginas institucionales y e-commerce completos.',
+                text: 'Actualmente trabajo como **Freelance Frontend Developer** (sep 2025 — actualidad), desarrollando portfolios, páginas institucionales y e-commerce completos.',
             },
             {
                 from: 'me',
-                text: 'Mi objetivo profesional: conseguir mi **primer rol como Full Stack Developer remoto**, donde pueda seguir aprendiendo y aportando con soluciones completas.',
+                text: 'Mi objetivo profesional: conseguir mi **primer rol como Frontend Developer remoto**, donde pueda seguir aprendiendo y aportando con interfaces limpias y usables.',
             },
             {
                 from: 'me',
-                text: 'Me especializo en construir aplicaciones completas: desde interfaces accesibles hasta APIs robustas, con atención al detalle y *arquitectura limpia*.',
+                text: 'Me especializo en construir interfaces accesibles, performantes y con atención al detalle: componentes reutilizables, *arquitectura limpia* y UX consistente.',
             },
             {
                 from: 'me',
@@ -85,196 +85,143 @@ export const chats: Chat[] = [
         description: 'Stack tecnológico y soft skills',
         messages: [
             { from: 'me', text: '**Frontend:** React 19, Next.js 15, TypeScript, JavaScript (ES6+).' },
-            { from: 'me', text: '**Estilos & UI:** Tailwind CSS, Radix UI, shadcn/ui, diseño *responsive* y mobile-first.' },
+            { from: 'me', text: '**Estilos & UI:** Tailwind CSS, Radix UI, Flowbite, diseño *responsive* y mobile-first.' },
             { from: 'me', text: '**Forms & Validación:** Formik + Yup; Animaciones con *Framer Motion*.' },
-            { from: 'me', text: '**Gestión de estado:** Context API, Custom Hooks, Zustand.' },
+            { from: 'me', text: '**Gestión de estado:** Context API, Custom Hooks.' },
             { from: 'me', text: '**Backend & DB:** Node.js, Express.js, PostgreSQL, MySQL, MongoDB, TypeORM.' },
-            { from: 'me', text: '**Lenguajes adicionales:** Java, Python, C#, .NET.' },
+            { from: 'me', text: '**Lenguajes adicionales:** Java, .Net, C#.' },
             {
                 from: 'me',
-                text: '**Integraciones:** MercadoPago, OAuth, APIs RESTful. **Herramientas:** Git/GitHub, Docker, ESLint, Postman, Trello.',
+                text: '**Integraciones:** MercadoPago, Mapbox, Google OAuth. **Herramientas:** Git/GitHub, ESLint, Postman, Trello, Slack.',
             },
-            { from: 'me', text: '**Deploy:** Vercel, Render, AWS, Railway.' },
-            { from: 'me', text: '**Metodologías:** Scrum, Kanban, pair programming, TDD.' },
+            { from: 'me', text: '**Deploy** en Vercel / Render.' },
+            { from: 'me', text: '**Metodologías:** Scrum, Kanban, pair programming.' },
             {
                 from: 'me',
-                text: '**Soft Skills:** Comunicación efectiva, resolución de problemas, trabajo en equipo, aprendizaje continuo.',
-                buttons: [
-                    { label: 'Ver Proyectos', action: 'projects' },
-                    { label: 'Contacto', action: 'contact' },
-                    { label: 'Menú Principal', action: 'menu' },
-                ],
+                text: '**Soft skills:** comunicación efectiva, trabajo en equipo, *liderazgo*, resolución de problemas, atención al detalle.',
             },
         ],
     },
     {
         id: 'projects',
-        title: 'Proyectos',
-        description: 'Desarrollos destacados',
+        title: 'Projects',
+        description: 'Proyectos destacados',
         messages: [
+            { from: 'me', text: '**PsyMatch** — Plataforma de Salud Mental (jul–ago 2025).' },
             {
                 from: 'me',
-                text: '**PsyMatch** — Plataforma de conexión psicólogo-paciente',
+                text: 'Conecta pacientes con profesionales mediante un algoritmo de matching. Incluye dashboards, reservas y **pagos**.',
             },
             {
                 from: 'me',
-                text: 'App completa que facilita la búsqueda y reserva de citas con psicólogos. Frontend en *React + TypeScript*, backend *Node.js + Express*, base de datos *PostgreSQL*.',
+                text: '**Stack:** Next.js 15, React 19, TS, Tailwind, Radix, Formik+Yup, ApexCharts, NestJS, PostgreSQL, TypeORM, Mapbox, MercadoPago, Google OAuth.',
             },
             {
                 from: 'me',
-                text: 'Características: autenticación OAuth, sistema de reservas, dashboard administrativo, pasarela de pagos MercadoPago, geolocalización con Mapbox.',
+                text: `**Links:** Repo: ${PROJECT_LINKS.PSYMATCH_REPO} · Demo: ${PROJECT_LINKS.PSYMATCH_DEMO}`,
             },
-            {
-                from: 'me',
-                text: '**Aura E-commerce** — Tienda online completa',
-            },
-            {
-                from: 'me',
-                text: 'E-commerce full-stack para productos de tecnología. *Next.js 15 + TypeScript*, backend *Node.js*, base de datos *PostgreSQL* con TypeORM.',
-            },
-            {
-                from: 'me',
-                text: 'Funcionalidades: carrito de compras, gestión de usuarios, panel admin, categorización de productos, sistema de órdenes completo.',
-            },
-            {
-                from: 'me',
-                text: 'Ambos proyectos incluyen: diseño responsive, animaciones fluidas, código limpio y documentado, testing, deploy en producción.',
-                buttons: [
-                    { label: 'GitHub', action: 'github' },
-                    { label: 'LinkedIn', action: 'linkedin' },
-                    { label: 'Contacto', action: 'contact' },
-                    { label: 'Menú Principal', action: 'menu' },
-                ],
-            },
+            { from: 'me', text: '**Aura** — Tienda de Ropa Deportiva Femenina (jul 2025).' },
+            { from: 'me', text: 'E-commerce con carrito persistente, validación de stock y *dashboard de gestión*.' },
+            { from: 'me', text: '**Stack:** Next.js 15, React 19, TS, Tailwind, Context API, Formik, next-themes, js-cookie.' },
+            { from: 'me', text: `**Links:** Repo: ${PROJECT_LINKS.AURA_REPO}` },
+            { from: 'me', text: '**Portfolio Creativo** (sep 2025).' },
+            { from: 'me', text: 'Portfolio que refleja identidad profesional, con foco en accesibilidad e *interacciones*.' },
+            { from: 'me', text: '**Stack:** Next.js, React, Tailwind, Framer Motion.' },
         ],
     },
     {
         id: 'experience',
-        title: 'Experiencia',
-        description: 'Trayectoria profesional',
+        title: 'Experiencia Profesional',
+        description: 'Experiencia laboral y voluntariado',
         messages: [
-            {
-                from: 'me',
-                text: '**Freelance Full Stack Developer** (sep 2025 — actualidad)',
-            },
-            {
-                from: 'me',
-                text: 'Desarrollo de aplicaciones web completas: portfolios profesionales, páginas institucionales y e-commerce. Trabajo directo con clientes, desde análisis de requerimientos hasta deploy.',
-            },
-            {
-                from: 'me',
-                text: '**Teaching Assistant - Henry Bootcamp** (jul 2025 — sept 2025)',
-            },
-            {
-                from: 'me',
-                text: 'Acompañé +100 estudiantes en su proceso de aprendizaje. Revisión de entregas, mentoría técnica, coordinación de equipos en metodologías ágiles.',
-            },
-            {
-                from: 'me',
-                text: '**Estudiante Full Stack - Henry** (abr 2025 — sept 2025)',
-            },
-            {
-                from: 'me',
-                text: 'Bootcamp intensivo de 700+ horas. Desarrollo de proyectos individuales y grupales usando tecnologías modernas. Enfoque en buenas prácticas y trabajo colaborativo.',
-            },
-            {
-                from: 'me',
-                text: 'Durante todas las experiencias: participación activa en code reviews, implementación de mejores prácticas, documentación técnica.',
-                buttons: [
-                    { label: 'Ver Educación', action: 'education' },
-                    { label: 'Contacto', action: 'contact' },
-                    { label: 'Menú Principal', action: 'menu' },
-                ],
-            },
+            { from: 'me', text: '**Freelance Frontend Developer** — sep 2025 - actualidad.' },
+            { from: 'me', text: 'Diseño y desarrollo de portfolios, páginas institucionales y e-commerce completos con Next.js y React.' },
+            { from: 'me', text: 'Implementación de integraciones de pago (MercadoPago) y gestión de stock.' },
+            { from: 'me', text: 'Diseño de interfaces en Figma priorizando accesibilidad y experiencia de usuario.' },
+            { from: 'me', text: '**Full Stack Teaching Assistant** — Henry Bootcamp (jul 2025 - actualidad).' },
+            { from: 'me', text: 'Soporte técnico a estudiantes en React, Node.js y PostgreSQL, promoviendo colaboración mediante pair programming.' },
+            { from: 'me', text: 'Coordinación de grupos de estudiantes para fomentar integración y comunicación efectiva.' },
+            { from: 'me', text: 'Revisión y depuración de entregas de proyectos, asegurando calidad de código y cumplimiento de deadlines.' },
+            { from: 'me', text: 'Guía en adopción de metodologías ágiles y estándares de la industria.' },
         ],
     },
     {
         id: 'education',
-        title: 'Educación',
-        description: 'Formación académica y certificaciones',
+        title: 'Educación y Certificaciones',
+        description: 'UTN, Henry, inglés',
         messages: [
             {
                 from: 'me',
-                text: '**Tecnicatura Universitaria en Tecnologías de la Información** - *UTN*',
+                text: '**UTN** — Tecnicatura Universitaria en Tecnologías de la Información (ago 2023 — actualidad). Materias: Algoritmos, Programación I & II, Bases de Datos, Análisis de Sistemas.',
             },
             {
                 from: 'me',
-                text: 'Agosto 2023 — Actualidad. Formación universitaria en desarrollo de software, bases de datos, arquitectura de sistemas.',
+                text: '**Henry** — Bootcamp Full Stack 3.0 (abr 2025 — sep 2025). Proyectos reales, pair programming y *metodologías ágiles*.',
             },
             {
                 from: 'me',
-                text: '**Bootcamp Full Stack 3.0** - *Henry*',
-            },
-            {
-                from: 'me',
-                text: 'Abril 2025 — Septiembre 2025. 700+ horas de formación intensiva. JavaScript, React, Node.js, PostgreSQL, metodologías ágiles.',
-            },
-            {
-                from: 'me',
-                text: '**Certificaciones adicionales:**\n• TypeScript Fundamentals\n• React Advanced Patterns\n• Node.js & Express Mastery\n• Database Design & PostgreSQL',
-            },
-            {
-                from: 'me',
-                text: '**Formación continua:** Cursos especializados en Next.js 15, arquitectura de software, testing, y mejores prácticas de desarrollo.',
-                buttons: [
-                    { label: 'Ver Skills', action: 'skills' },
-                    { label: 'Contacto', action: 'contact' },
-                    { label: 'Menú Principal', action: 'menu' },
-                ],
+                text: `**Certificado de inglés EF SET:** 46/100 — Nivel B1 Intermedio. ${PROJECT_LINKS.ENGLISH_CERT}`,
             },
         ],
     },
     {
         id: 'recommendations',
         title: 'Recomendaciones',
-        description: 'Referencias profesionales',
+        description: 'Opiniones de colegas y mentores',
         messages: [
             {
                 from: 'me',
-                text: '**Referencias de Henry Bootcamp:**',
+                fromContact: 'Matías Camba',
+                text: 'Con apenas veinte y algo de años, Ludmila ya reúne dos cualidades clave: **talento** y comunicación. Inspira y *motiva a crecer*.',
             },
             {
                 from: 'me',
-                text: '"Ludmila demostró excelentes habilidades técnicas y de liderazgo como Teaching Assistant. Su capacidad para explicar conceptos complejos y guiar estudiantes fue excepcional."',
+                fromContact: 'Andrea Larsen',
+                text: 'Desde el inicio se destacó por su **disposición para ayudar** y su *curiosidad* por las nuevas tecnologías.',
             },
             {
                 from: 'me',
-                text: '**Testimonio de estudiantes mentoreados:**',
+                fromContact: 'Luis Miguel Alfonzo Roca',
+                text: 'Su capacidad para **liderar** y presentar el demo fue clave para transmitir valor y generar *confianza*.',
             },
             {
                 from: 'me',
-                text: '"Gracias a Ludmila pude entender React y TypeScript de manera clara. Siempre estuvo disponible para resolver dudas y nos ayudó a implementar mejores prácticas."',
+                fromContact: 'Morena Martín',
+                text: 'Propuso la **idea inicial**, diseñó en *Figma* y lideró el frontend. Responsable y *clara al comunicar*.',
             },
             {
                 from: 'me',
-                text: '**Referencias de clientes freelance:**',
+                fromContact: 'Mauricio Herrera',
+                text: 'Profesional capaz, inteligente y *talentosa*. Eleva al equipo con su **compromiso** y comunicación.',
             },
             {
                 from: 'me',
-                text: '"Trabajo excepcional en el desarrollo de nuestro e-commerce. Entregó a tiempo, con código limpio y funcionalidades que superaron nuestras expectativas."',
+                fromContact: 'Francisco D’Alessandro',
+                text: 'Constante, curiosa y en búsqueda de la excelencia. Perfil ideal para crecer y aportar valor.',
             },
             {
                 from: 'me',
-                text: 'Disponible para proporcionar contactos de referencias específicas según sea necesario.',
-                buttons: [
-                    { label: 'LinkedIn', action: 'linkedin' },
-                    { label: 'Contacto', action: 'contact' },
-                    { label: 'Menú Principal', action: 'menu' },
-                ],
+                text: 'Ver recomendaciones completas en LinkedIn',
+                buttons: [{ label: 'Abrir LinkedIn', action: CONTACT_LINKS.LINKEDIN_RECOMMENDATIONS }],
+            },
+        ],
+    },
+    {
+        id: 'contact',
+        title: 'Contacto',
+        description: 'Formulario conversacional',
+        messages: [
+            { from: 'me', text: 'Al finalizar esta conversación, tu mensaje llegará a **lud.ravelli@gmail.com**.' },
+            {
+                from: 'me' as const,
+                text: '**Contacto rápido:**\n *Ubicación:* Santa Fe, Argentina\n *Email:* lud.ravelli@gmail.com\n *LinkedIn:* Ludmila Ravelli\n *GitHub:* RavelliLudmila',
+                buttons: CONTACT_BUTTONS,
+            },
+            {
+                from: 'me',
+                text: '¿Quieres comenzar ahora?',
+                buttons: [{ label: 'Comenzar', action: 'start-form' }],
             },
         ],
     },
 ];
-
-export const contactChat: Chat = {
-    id: 'contact',
-    title: 'Contacto',
-    description: 'Hablemos de tu proyecto',
-    messages: [
-        {
-            from: 'me',
-            text: '¡Perfecto! Me encanta conocer proyectos nuevos. ¿Cuál es la mejor forma de contactarte?',
-            buttons: CONTACT_BUTTONS,
-        },
-    ],
-};
