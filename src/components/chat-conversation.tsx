@@ -414,7 +414,7 @@ export function ChatConversation({ chat, onBack, onNavigateToChat }: ChatConvers
                 ref={containerRef}
                 className={`flex-1 min-h-0 overflow-y-auto p-4 space-y-4 relative ${onBack ? 'pt-20 pb-20 md:pt-4 md:pb-4' : ''}`}
                 style={{
-                    backgroundImage: `url('/Fondo.png')`,
+                    backgroundImage: `url('/fondo.png')`,
                     backgroundSize: 'auto',
                     backgroundPosition: 'top left',
                     backgroundRepeat: 'repeat',
