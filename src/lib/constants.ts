@@ -10,7 +10,9 @@ export const CONTACT_LINKS = {
 export const PROJECT_LINKS = {
     PSYMATCH_REPO: 'https://github.com/PsyMatch/PsyMatch-Frontend',
     PSYMATCH_DEMO: 'https://psymatch-frontend-app.onrender.com/',
-    AURA_REPO: 'https://github.com/RavelliLudmila/AuraEcommerce',
+    AURA_REPO: 'https://github.com/RavelliLudmila/aura-ecommerce',
+    AURA_DEMO: 'https://www.aurafitarg.com.ar/',
+    PORTFOLIO_REPO: 'https://github.com/RavelliLudmila/portfolio-juanjo-ramirez',
     ENGLISH_CERT: 'https://cert.efset.org/es/pCCWg1',
 };
 
