@@ -65,10 +65,8 @@ export function useActiveSection(sections: string[]) {
             const scrollPosition = window.scrollY + 100;
 
             for (const sectionId of sections.slice().reverse()) {
-                const element = sectionId === 'home' 
-                    ? document.body 
-                    : document.getElementById(sectionId);
-                
+                const element = sectionId === 'home' ? document.body : document.getElementById(sectionId);
+
                 if (element) {
                     const offsetTop = sectionId === 'home' ? 0 : element.offsetTop;
                     if (scrollPosition >= offsetTop) {

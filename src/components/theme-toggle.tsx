@@ -31,13 +31,7 @@ export function ThemeToggle() {
     };
 
     return (
-        <Button
-            variant="ghost"
-            size="sm"
-            onClick={cycleTheme}
-            className="relative overflow-hidden group"
-            title={`Tema actual: ${getLabel()}`}
-        >
+        <Button variant="ghost" size="sm" onClick={cycleTheme} className="relative overflow-hidden group" title={`Tema actual: ${getLabel()}`}>
             <AnimatePresence mode="wait">
                 <motion.div
                     key={theme}
@@ -50,7 +44,7 @@ export function ThemeToggle() {
                     {getIcon()}
                 </motion.div>
             </AnimatePresence>
-            
+
             <motion.div
                 className="absolute inset-0 bg-primary/10 rounded-md"
                 initial={{ scale: 0, opacity: 0 }}

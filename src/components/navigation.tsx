@@ -52,9 +52,7 @@ export function Navigation() {
                                     key={item.id}
                                     onClick={() => handleNavigation(item.id)}
                                     className={`text-sm font-medium transition-colors hover:text-primary ${
-                                        activeSection === item.id
-                                            ? 'text-primary'
-                                            : 'text-muted-foreground'
+                                        activeSection === item.id ? 'text-primary' : 'text-muted-foreground'
                                     }`}
                                 >
                                     {item.label}
@@ -83,12 +81,7 @@ export function Navigation() {
                         </div>
 
                         {/* Mobile Menu Button */}
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            className="md:hidden"
-                            onClick={() => setIsOpen(!isOpen)}
-                        >
+                        <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
                             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </Button>
                     </div>
@@ -111,15 +104,13 @@ export function Navigation() {
                                     key={item.id}
                                     onClick={() => handleNavigation(item.id)}
                                     className={`block w-full text-left text-sm font-medium transition-colors hover:text-primary ${
-                                        activeSection === item.id
-                                            ? 'text-primary'
-                                            : 'text-muted-foreground'
+                                        activeSection === item.id ? 'text-primary' : 'text-muted-foreground'
                                     }`}
                                 >
                                     {item.label}
                                 </button>
                             ))}
-                            
+
                             <div className="flex items-center space-x-3 pt-4 border-t border-border">
                                 <ThemeToggle />
                                 <Button variant="ghost" size="sm" asChild>

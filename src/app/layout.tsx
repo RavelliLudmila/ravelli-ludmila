@@ -41,12 +41,7 @@ export default function RootLayout({
     return (
         <html lang="es">
             <body className={`font-poppins ${poppins.variable} antialiased bg-background text-foreground`}>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="dark"
-                    enableSystem
-                    disableTransitionOnChange
-                >
+                <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
                     <ScrollProgressIndicator />
                     <Navigation />
                     <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>

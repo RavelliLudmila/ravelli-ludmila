@@ -34,7 +34,7 @@ export default function HomePage() {
     return (
         <div className="min-h-screen bg-background text-foreground">
             <SplashScreen />
-            
+
             {/* Hero Section */}
             <main className="pt-20">
                 <section className="container mx-auto px-6 py-20 text-center">
@@ -98,13 +98,23 @@ export default function HomePage() {
                             transition={{ duration: 0.8, delay: 1.0 }}
                         >
                             <Button variant="ghost" size="sm" asChild>
-                                <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary">
+                                <a
+                                    href={profile.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 hover:text-primary"
+                                >
                                     <Github className="w-5 h-5" />
                                     GitHub
                                 </a>
                             </Button>
                             <Button variant="ghost" size="sm" asChild>
-                                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary">
+                                <a
+                                    href={profile.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 hover:text-primary"
+                                >
                                     <Linkedin className="w-5 h-5" />
                                     LinkedIn
                                 </a>

@@ -10,9 +10,9 @@ export function LoadingAnimation() {
 
     useEffect(() => {
         const timer = setTimeout(() => setIsLoading(false), 3000);
-        
+
         const progressInterval = setInterval(() => {
-            setProgress(prev => {
+            setProgress((prev) => {
                 if (prev >= 100) {
                     clearInterval(progressInterval);
                     return 100;
@@ -33,7 +33,7 @@ export function LoadingAnimation() {
                 <motion.div
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, scale: 1.1 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    transition={{ duration: 0.8, ease: 'easeInOut' }}
                     className="fixed inset-0 z-50 bg-gradient-to-br from-background to-muted/50 flex items-center justify-center"
                 >
                     <div className="text-center space-y-6">
@@ -47,7 +47,7 @@ export function LoadingAnimation() {
                             <div className="relative w-20 h-20 mx-auto">
                                 <motion.div
                                     animate={{ rotate: 360 }}
-                                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                                     className="absolute inset-0 rounded-full border-4 border-primary/20 border-t-primary"
                                 />
                                 <div className="absolute inset-4 bg-gradient-to-br from-pink-400 to-blue-500 rounded-full flex items-center justify-center">
@@ -99,28 +99,28 @@ export function LoadingAnimation() {
                             {[...Array(6)].map((_, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ 
+                                    initial={{
                                         x: Math.random() * window.innerWidth,
                                         y: window.innerHeight + 20,
-                                        opacity: 0
+                                        opacity: 0,
                                     }}
                                     animate={{
                                         y: -20,
                                         opacity: [0, 1, 0],
-                                        x: Math.random() * window.innerWidth
+                                        x: Math.random() * window.innerWidth,
                                     }}
                                     transition={{
                                         duration: 3 + Math.random() * 2,
                                         repeat: Infinity,
                                         delay: Math.random() * 2,
-                                        ease: "linear"
+                                        ease: 'linear',
                                     }}
                                     className="absolute"
                                 >
-                                    <Sparkles 
-                                        className="w-4 h-4 text-primary/40" 
+                                    <Sparkles
+                                        className="w-4 h-4 text-primary/40"
                                         style={{
-                                            transform: `rotate(${Math.random() * 360}deg)`
+                                            transform: `rotate(${Math.random() * 360}deg)`,
                                         }}
                                     />
                                 </motion.div>
