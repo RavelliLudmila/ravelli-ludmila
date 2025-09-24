@@ -2,7 +2,7 @@ import { useState, useEffect, RefObject } from 'react';
 
 interface UseScrollToTopOptions {
     threshold?: number;
-    containerRef: RefObject<HTMLDivElement | null>;
+    containerRef: RefObject<HTMLDivElement>;
 }
 
 export function useScrollToTop({ threshold = 200, containerRef }: UseScrollToTopOptions) {
