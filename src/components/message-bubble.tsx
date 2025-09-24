@@ -72,6 +72,15 @@ export function MessageBubble({ message, onButtonClick }: MessageBubbleProps) {
                                     onClick={() => {
                                         if (button.action.startsWith('http') || button.action.includes('mail.google.com')) {
                                             window.open(button.action, '_blank');
+                                        } else if (button.action.endsWith('.pdf')) {
+                                            // Crear enlace temporal para forzar descarga del PDF
+                                            const link = document.createElement('a');
+                                            link.href = button.action;
+                                            link.download = 'CV-Ludmila-Ravelli-Frontend-Developer.pdf'; // Nombre limpio para descarga
+                                            link.target = '_blank';
+                                            document.body.appendChild(link);
+                                            link.click();
+                                            document.body.removeChild(link);
                                         } else {
                                             onButtonClick?.(button.action);
                                         }

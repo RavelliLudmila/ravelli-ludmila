@@ -30,7 +30,7 @@ export const SECTION_SUMMARIES = {
         { from: 'me' as const, text: `Tu mensaje llegará a ${CONTACT_LINKS.EMAIL}` },
         {
             from: 'me' as const,
-            text: `**Contacto rápido:**\n *Ubicación:* Santa Fe, Argentina\n *Email:* ${CONTACT_LINKS.EMAIL}\n *LinkedIn:* Ludmila Ravelli\n *GitHub:* RavelliLudmila`,
+            text: `**Contacto rápido:**\n *Ubicación:* Santa Fe, Argentina\n *Email:* ${CONTACT_LINKS.EMAIL}\n *CV:* Descargar PDF\n *LinkedIn:* Ludmila Ravelli\n *GitHub:* RavelliLudmila`,
             buttons: CONTACT_BUTTONS,
         },
     ],
