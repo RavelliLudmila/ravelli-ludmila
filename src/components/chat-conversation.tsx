@@ -103,7 +103,7 @@ export function ChatConversation({ chat, onBack, onNavigateToChat }: ChatConvers
     };
 
     const handleBotAction = (action: string) => {
-        if (onNavigateToChat && ['about', 'skills', 'projects', 'education', 'recommendations', 'contact'].includes(action)) {
+        if (onNavigateToChat && ['about', 'skills', 'projects', 'experience', 'education', 'recommendations', 'contact'].includes(action)) {
             onNavigateToChat(action);
         }
     };
@@ -113,6 +113,7 @@ export function ChatConversation({ chat, onBack, onNavigateToChat }: ChatConvers
             about: 'About Me',
             skills: 'Skills',
             projects: 'Projects',
+            experience: 'Experiencia',
             education: 'Educación',
             recommendations: 'Recomendaciones',
             contact: 'Contacto',
@@ -120,6 +121,7 @@ export function ChatConversation({ chat, onBack, onNavigateToChat }: ChatConvers
             'details-about': 'Ver Detalles de About Me',
             'details-skills': 'Ver Detalles de Skills',
             'details-projects': 'Ver Detalles de Projects',
+            'details-experience': 'Ver Detalles de Experiencia',
             'details-education': 'Ver Detalles de Educación',
             'details-recommendations': 'Ver Detalles de Recomendaciones',
             'details-contact': 'Ver Detalles de Contacto',
@@ -141,7 +143,7 @@ export function ChatConversation({ chat, onBack, onNavigateToChat }: ChatConvers
             return;
         }
 
-        if (['about', 'skills', 'projects', 'education', 'recommendations', 'contact'].includes(action)) {
+        if (['about', 'skills', 'projects', 'experience', 'education', 'recommendations', 'contact'].includes(action)) {
             const sectionMessages = SECTION_SUMMARIES[action as keyof typeof SECTION_SUMMARIES] || [];
 
             sectionMessages.forEach((msg, index) => {
@@ -382,7 +384,8 @@ export function ChatConversation({ chat, onBack, onNavigateToChat }: ChatConvers
             about: 'from-purple-300 to-blue-300',
             skills: 'from-blue-300 to-teal-300',
             projects: 'from-teal-300 to-green-300',
-            education: 'from-green-300 to-yellow-300',
+            experience: 'from-green-300 to-emerald-300',
+            education: 'from-emerald-300 to-yellow-300',
             recommendations: 'from-yellow-300 to-orange-300',
             contact: 'from-orange-300 to-pink-300',
         };
