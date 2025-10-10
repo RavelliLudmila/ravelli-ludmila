@@ -54,11 +54,19 @@ export const chats: Chat[] = [
             },
             {
                 from: 'me',
-                text: 'En Henry, como TA, acompañé a más de 100 estudiantes, revisé entregas y guié equipos en *metodologías ágiles* (Scrum, Kanban) y buenas prácticas.',
+                text: 'En Henry, como TA, acompañé a más de 100 estudiantes, revisé entregas y guié equipos en *metodologías ágiles* (Scrum) y buenas prácticas.',
             },
             {
                 from: 'me',
                 text: 'Actualmente trabajo como **Freelance Frontend Developer** (sep 2025 — actualidad), desarrollando portfolios, páginas institucionales y e-commerce completos.',
+            },
+            {
+                from: 'me',
+                text: 'También formo parte del equipo de **EcoRed**, una plataforma web de economía circular que conecta a personas, cooperativas y empresas para *reutilizar y reacondicionar electrodomésticos*, promoviendo la sustentabilidad.',
+            },
+            {
+                from: 'me',
+                text: 'En EcoRed me encargo del **diseño UX/UI** y el **desarrollo frontend** con *Next.js, Tailwind, TypeScript y Framer Motion*, asegurando coherencia visual, accesibilidad y una experiencia de usuario fluida.',
             },
             {
                 from: 'me',
@@ -135,11 +143,19 @@ export const chats: Chat[] = [
         title: 'Experiencia Profesional',
         description: 'Experiencia laboral y voluntariado',
         messages: [
-            { from: 'me', text: '**Freelance Frontend Developer** — sep 2025 - actualidad.' },
+            { from: 'me', text: '**UX/UI Designer & Frontend Developer** — oct 2025 - actualidad' },
+            {
+                from: 'me',
+                text: 'Diseño y desarrollo del MVP de una plataforma de economía circular enfocada en la trazabilidad y reutilización de electrodomésticos.',
+            },
+            { from: 'me', text: 'Creación de la identidad visual y diseño de interfaces en Figma coherentes con la comunicación de marca.' },
+            { from: 'me', text: 'Implementación completa del frontend con Next.js, Tailwind, TypeScript y Framer Motion.' },
+            { from: 'me', text: 'Colaboración en la definición de arquitectura, flujo de usuario y componentes reutilizables.' },
+            { from: 'me', text: '**Freelance Frontend Developer** — sep 2025 - actualidad' },
             { from: 'me', text: 'Diseño y desarrollo de portfolios, páginas institucionales y e-commerce completos con Next.js y React.' },
             { from: 'me', text: 'Implementación de integraciones de pago (MercadoPago) y gestión de stock.' },
             { from: 'me', text: 'Diseño de interfaces en Figma priorizando accesibilidad y experiencia de usuario.' },
-            { from: 'me', text: '**Full Stack Teaching Assistant** — Henry Bootcamp (jul 2025 - actualidad).' },
+            { from: 'me', text: '**Full Stack Teaching Assistant** — jul 2025 - oct 2025' },
             { from: 'me', text: 'Soporte técnico a estudiantes en React, Node.js y PostgreSQL, promoviendo colaboración mediante pair programming.' },
             { from: 'me', text: 'Coordinación de grupos de estudiantes para fomentar integración y comunicación efectiva.' },
             { from: 'me', text: 'Revisión y depuración de entregas de proyectos, asegurando calidad de código y cumplimiento de deadlines.' },

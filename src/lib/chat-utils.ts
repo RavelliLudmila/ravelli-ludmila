@@ -18,9 +18,9 @@ export const SECTION_SUMMARIES = {
         { from: 'me' as const, text: 'Portfolio Creativo — Diseño que refleja mi identidad profesional.' },
     ],
     experience: [
-        { from: 'me' as const, text: 'Freelance Frontend Developer (sep 2025 - actualidad).' },
-        { from: 'me' as const, text: 'Desarrollo portfolios, e-commerce e integraciones de pago.' },
-        { from: 'me' as const, text: 'Full Stack Teaching Assistant en Henry - soporte técnico y mentoría.' },
+        { from: 'me' as const, text: 'UX/UI Designer & Frontend Developer en EcoRed (abr 2025 - actualidad)' },
+        { from: 'me' as const, text: 'Freelance Frontend Developer (sep 2025 - actualidad)' },
+        { from: 'me' as const, text: 'Full Stack Teaching Assistant (jul 2025 - oct 2025)' },
     ],
     education: [
         { from: 'me' as const, text: 'UTN — Tecnicatura en Tecnologías de la Información (2023-2026).' },
