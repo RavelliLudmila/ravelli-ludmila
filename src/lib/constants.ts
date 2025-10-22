@@ -2,7 +2,7 @@ export const CONTACT_LINKS = {
     EMAIL: 'lud.ravelli@gmail.com',
     LINKEDIN: 'https://linkedin.com/in/ravelliludmila',
     GITHUB: 'https://github.com/RavelliLudmila',
-    CV: '/Ludmila Ravelli – CV – Frontend Developer.pdf',
+    CV: 'https://drive.google.com/file/d/1eE1eBSVf2tWnTStqK_yMarq4FaYS_6YM/view?usp=sharing',
     GMAIL_COMPOSE:
         'https://mail.google.com/mail/?view=cm&to=lud.ravelli@gmail.com&su=Oportunidad%20Laboral&body=Hola%20Ludmila,%0A%0AHe%20visto%20tu%20portfolio%20y%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20tu%20experiencia%20como%20Frontend%20Developer.%0A%0A[Escribe%20tu%20mensaje%20aqu%C3%AD]%0A%0ASaludos,%20[Tu%20Nombre].',
     LINKEDIN_RECOMMENDATIONS: 'https://www.linkedin.com/in/ravelliludmila/details/recommendations',

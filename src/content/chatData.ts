@@ -82,7 +82,7 @@ export const chats: Chat[] = [
             },
             {
                 from: 'me',
-                text: '**Contacto rápido:**\n *Ubicación:* Santa Fe, Argentina\n *Email:* lud.ravelli@gmail.com\n *CV:* Descargar PDF\n *LinkedIn:* Ludmila Ravelli\n *GitHub:* RavelliLudmila',
+                text: '**Contacto rápido:**\n *Ubicación:* Santa Fe, Argentina\n *Email:* lud.ravelli@gmail.com\n *CV:* Descargar\n *LinkedIn:* Ludmila Ravelli\n *GitHub:* RavelliLudmila',
                 buttons: CONTACT_BUTTONS,
             },
         ],
@@ -231,7 +231,7 @@ export const chats: Chat[] = [
             { from: 'me', text: 'Al finalizar esta conversación, tu mensaje llegará a **lud.ravelli@gmail.com**.' },
             {
                 from: 'me' as const,
-                text: '**Contacto rápido:**\n *Ubicación:* Santa Fe, Argentina\n *Email:* lud.ravelli@gmail.com\n *CV:* Descargar PDF\n *LinkedIn:* Ludmila Ravelli\n *GitHub:* RavelliLudmila',
+                text: '**Contacto rápido:**\n *Ubicación:* Santa Fe, Argentina\n *Email:* lud.ravelli@gmail.com\n *CV:* Descargar\n *LinkedIn:* Ludmila Ravelli\n *GitHub:* RavelliLudmila',
                 buttons: CONTACT_BUTTONS,
             },
             {

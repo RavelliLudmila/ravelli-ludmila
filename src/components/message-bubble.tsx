@@ -72,14 +72,6 @@ export function MessageBubble({ message, onButtonClick }: MessageBubbleProps) {
                                     onClick={() => {
                                         if (button.action.startsWith('http') || button.action.includes('mail.google.com')) {
                                             window.open(button.action, '_blank');
-                                        } else if (button.action.endsWith('.pdf')) {
-                                            const link = document.createElement('a');
-                                            link.href = button.action;
-                                            link.download = 'Ludmila Ravelli - CV - Frontend Developer.pdf';
-                                            link.target = '_blank';
-                                            document.body.appendChild(link);
-                                            link.click();
-                                            document.body.removeChild(link);
                                         } else {
                                             onButtonClick?.(button.action);
                                         }
